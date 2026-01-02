@@ -1,0 +1,62 @@
+<div class="view-candidate-container">
+
+  <div class="header">
+
+    <h2>Election Candidates</h2>
+      <a
+      class="add-candidate-btn"
+      routerLink="/admin-dashboard/add-candidate">
+      Add Candidate
+    </a>
+    
+  </div>
+  <div *ngIf="(groupedCandidates$ | async) as groups; else loading">
+
+    <section class="position-section" *ngFor="let group of groups">
+
+      <div class="position-header">
+        <span class="position-badge">{{ group.position }}</span>
+      </div>
+
+      <!-- GRID LIST -->
+      <div class="candidate-list">
+
+        <div class="candidate-card" *ngFor="let candidate of group.list">
+
+          <!-- Image -->
+          <div class="candidate-image">
+            <img
+              [src]="candidate.sign_url || 'assets/default-sign.png'"
+              alt="Candidate Sign">
+          </div>
+
+          <!-- Details -->
+          <div class="candidate-details">
+            <h3>{{ candidate.name }}</h3>
+
+            <p><strong>ID:</strong> {{ candidate.candidate_id }}</p>
+            <p *ngIf="candidate.dept"><strong>Department:</strong> {{ candidate.dept }}</p>
+            <p *ngIf="candidate.semester"><strong>Semester:</strong> {{ candidate.semester }}</p>
+
+            <button
+              *ngIf="isAdmin"
+              class="delete-btn"
+              (click)="deleteCandidate(candidate.candidate_id)">
+              Delete Candidate
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <ng-template #loading>
+    <p class="loading-text">Loading candidates...</p>
+  </ng-template>
+
+</div>
+
+<router-outlet></router-outlet>

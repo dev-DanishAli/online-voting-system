@@ -1,0 +1,155 @@
+.admin-content {
+  padding: 24px;
+  font-family: 'Poppins', sans-serif;
+  background: #f6f8fb;
+}
+
+/* KPI Cards Row */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+  margin-top: 20px;
+}
+
+.kpi-card {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  border-radius: 18px;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.kpi-card:hover { transform: translateY(-5px); }
+
+.kpi-card .icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 14px;
+}
+
+.kpi-card .icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.kpi-card .info h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.kpi-card .info p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Card Gradients */
+.kpi-card.red { background: linear-gradient(135deg,#ff6b6b,#ff8e53); }
+.kpi-card.blue { background: linear-gradient(135deg,#4d9fec,#5bc0f8); }
+.kpi-card.yellow { background: linear-gradient(135deg,#ffb75e,#ed8f03); }
+.kpi-card.purple { background: linear-gradient(135deg,#6a5acd,#8a7ff4); }
+
+/* Ongoing Election Compact Card */
+.ongoing-election {
+  background: #fff;
+  padding: 18px 22px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.ongoing-election .election-info {
+  display: flex;
+  align-items: center;
+}
+
+.ongoing-election .election-icon {
+  font-size: 28px;
+  color: #4d9fec;
+  margin-right: 12px;
+}
+
+.ongoing-election .text h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.ongoing-election .text p {
+  margin: 2px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-badge {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 600;
+  background: #e63946;
+}
+
+/* Analytics Row */
+.analytics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.analytics-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.circular-progress-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circular-progress {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-text {
+  background: #fff;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+/* Lists */
+.analytics-card h4 { margin-top: 16px; font-size: 15px; color: #555; }
+.analytics-card ul { margin-left: 16px; margin-top: 6px; }
+.analytics-card li { margin-bottom: 6px; font-size: 14px; }
+
+@media (max-width: 900px) {
+  .analytics-row {
+    grid-template-columns: 1fr;
+  }
+}

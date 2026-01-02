@@ -1,0 +1,70 @@
+<div class="cast-vote-container">
+
+  <h2>Cast Your Vote</h2>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading election information...</p>
+  </div>
+
+  <div *ngIf="!loading && !hasActiveElection" class="no-election-message">
+    <h3>No active elections right now</h3>
+    <p>Please check back later.</p>
+  </div>
+
+  <ng-container *ngIf="!loading && hasActiveElection">
+    <ng-container *ngIf="positions[currentStep] as position">
+      <h3 class="position-title">{{ position.label }}</h3>
+
+      <div class="candidates-grid">
+        <label
+          class="candidate-card"
+          *ngFor="let candidate of groupedCandidates[position.label] || []"
+          [class.selected]="selectedVotes[position.label] === candidate.candidate_id"
+        >
+          <input
+            type="radio"
+            name="position-{{currentStep}}"
+            (change)="selectVote(position.label, candidate.candidate_id)"
+            [checked]="selectedVotes[position.label] === candidate.candidate_id"
+          />
+
+          <img
+            class="candidate-photo"
+            [src]="getImage(candidate.election_sign)"
+            alt="Candidate Photo"
+          />
+
+          <div class="candidate-info">
+            <span class="candidate-name">{{ candidate.name }}</span>
+            <span class="candidate-meta">{{ candidate.dept }} · Semester {{ candidate.semester }}</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="no-candidates"
+           *ngIf="(groupedCandidates[position.label]?.length || 0) === 0">
+        <p>No candidates available for this position.</p>
+      </div>
+
+      <div class="step-navigation">
+        <button (click)="prevStep()" [disabled]="currentStep === 0">Previous</button>
+
+        <button
+          *ngIf="currentStep < positions.length - 1"
+          (click)="nextStep()"
+          [disabled]="!selectedVotes[position.label]"
+        >
+          Next
+        </button>
+
+        <button
+          *ngIf="currentStep === positions.length - 1"
+          (click)="submitVote()"
+          [disabled]="!selectedVotes[position.label]"
+        >
+          Submit
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,0 +1,143 @@
+<main>
+  <div class="title">
+    <h1>Elections</h1>
+
+    <div class="actions">
+      <button type="button" (click)="openModal(); $event.stopPropagation()">
+        Add New Election
+      </button>
+
+      <button type="button" (click)="deleteAllElections(); $event.stopPropagation()">
+        Delete All Elections
+      </button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>S/No</th>
+        <th>Title</th>
+        <th>Created At</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (election of elections; track election.election_id) {
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ election.title }}</td>
+          <td>{{ election.created_at }}</td>
+          <td>{{ election.status }}</td>
+
+          <td>
+            <!-- START / STOP BUTTONS -->
+            <button
+              type="button"
+              class="start"
+              *ngIf="election.status === 'pending'"
+              (click)="confirmStatusAction(election); $event.stopPropagation()">
+              Start
+            </button>
+
+            <button
+              type="button"
+              class="stop"
+              *ngIf="election.status === 'active'"
+              (click)="confirmStatusAction(election); $event.stopPropagation()">
+              Stop
+            </button>
+
+            <button type="button" class="ended" *ngIf="election.status === 'ended'" disabled>
+              Ended
+            </button>
+
+            <!-- UPDATE -->
+            <button
+              type="button"
+              class="update"
+              (click)="updateElection(election); $event.stopPropagation()">
+              Update
+            </button>
+
+            <!-- DELETE -->
+            <button
+              type="button"
+              class="delete"
+              (click)="deleteElection(election); $event.stopPropagation()">
+              Delete
+            </button>
+
+            <!-- VIEW CANDIDATES -->
+            <button
+              type="button"
+              class="viewCandidates"
+              (click)="viewCandidates(election.election_id); $event.stopPropagation()">
+              View Candidates
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <!-- ===========================
+       DELETE CONFIRM MODAL
+  ============================ -->
+  <div *ngIf="showDeleteModal" class="delete-modal">
+    <h1>Are you sure you want to delete?</h1>
+
+    <div class="actions">
+      <button type="button" class="btn" (click)="cancelDelete()">No</button>
+      <button type="button" class="btn" (click)="confirmDelete()">Yes, Delete</button>
+    </div>
+  </div>
+
+  <!-- ===========================
+       STATUS CONFIRM MODAL (START/STOP)
+  ============================ -->
+  <div *ngIf="showStatusModal" class="delete-modal">
+    <h1>Are you sure you want to {{ statusAction }} this election?</h1>
+
+    <div class="actions">
+      <button type="button" class="btn" (click)="cancelStatus()">No</button>
+      <button type="button" class="btn" (click)="confirmStatus()">Yes</button>
+    </div>
+  </div>
+
+  <!-- ===========================
+       ADD ELECTION MODAL
+  ============================ -->
+  @if (showModal) {
+    <div class="modal">
+      <h1>Add Election</h1>
+
+      <span class="close-btn" (click)="closeModal(); $event.stopPropagation()">&times;</span>
+
+      <form #addElectionForm="ngForm" (ngSubmit)="postElection(addElectionForm)">
+        <label>Title</label>
+        <input
+          type="text"
+          name="title"
+          required
+          placeholder="Enter Election name"
+          [(ngModel)]="electionData.title">
+
+        <label>Status</label>
+        <input type="text" name="status" readonly [(ngModel)]="electionData.status">
+
+        <label>Created At</label>
+        <input type="text" name="created_at" readonly [(ngModel)]="electionData.created_at">
+
+        <div class="actions">
+          <button type="reset" class="btn">Reset</button>
+          <button type="submit" class="btn" [disabled]="addElectionForm.invalid">Add Election</button>
+        </div>
+      </form>
+    </div>
+  }
+</main>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,17 @@
+<!-- analytics.html -->
+<div class="container">
+  <h1>Election Analytics</h1>
+
+  <div *ngIf="loading" class="loading">Loading analytics...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div *ngFor="let chart of chartsData" class="chart-card">
+    <h2>{{ chart.positionName }}</h2>
+    <canvas
+      baseChart
+      [data]="chart.chartConfig.data"
+      [type]="chart.chartConfig.type"
+      [options]="chart.chartConfig.options">
+    </canvas>
+  </div>
+</div>

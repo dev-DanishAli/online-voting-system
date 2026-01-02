@@ -1,0 +1,169 @@
+/* Full-width Container */
+.add-candidate-card {
+  width: 95%;
+  max-width: 1400px; /* expands on large screens */
+  margin: 30px auto;
+  padding: 35px 40px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Heading */
+.add-candidate-card h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1f1f1f;
+  text-align: center;
+}
+
+/* Main Form Flex */
+.form-main {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+/* Left Inputs */
+.form-left {
+  flex: 3; /* wider for inputs */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Right File Upload */
+.form-right {
+  flex: 1; /* narrower but visible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-right .file-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-right input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: border 0.3s;
+}
+
+.form-right input[type="file"]:hover {
+  border-color: #1f6feb;
+}
+
+/* Preview Image */
+.preview {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1f6feb;
+  box-shadow: 0 0 8px rgba(31,111,235,0.2);
+  outline: none;
+}
+
+/* Footer */
+.form-footer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button[type="submit"] {
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #f8b500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: linear-gradient(135deg, #fceabb, #f8b500);
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 12px;
+  font-weight: 500;
+  color: #e74c3c;
+  text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1250px) {
+  .form-main {
+    flex-direction: column;
+  }
+  .form-left {
+    grid-template-columns: 1fr;
+  }
+  .form-right {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  .preview {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-candidate-card {
+    padding: 25px 20px;
+  }
+}

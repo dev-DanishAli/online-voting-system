@@ -1,0 +1,31 @@
+<div class="admin-dashboard">
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li routerLink="/admin-dashboard/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <img src="https://img.icons8.com/ios-filled/24/000000/combo-chart.png" alt="Dashboard Icon"> Dashboard
+      </li>
+      <li routerLink="/admin-dashboard/analytics" routerLinkActive="active">
+        <img src="https://img.icons8.com/ios-filled/24/000000/statistics.png" alt="Analytics Icon"> Analytics
+      </li>
+      <!-- <li routerLink="/admin-dashboard/candidates" routerLinkActive="active">
+        <img src="https://img.icons8.com/ios-filled/24/000000/conference-call.png" alt="Candidates Icon"> Candidates
+      </li> -->
+      <li routerLink="/admin-dashboard/start-election" routerLinkActive="active">
+        <img src="https://img.icons8.com/ios-filled/24/000000/checklist.png" alt="Start/End Election Icon">Elections
+      </li>
+      <li routerLink="/admin-dashboard/history" routerLinkActive="active">
+        <img src="https://img.icons8.com/ios-filled/24/000000/time-machine.png" alt="History Icon"> History
+      </li>
+      <li (click)="logout()">
+        <img src="https://img.icons8.com/ios-filled/24/000000/logout-rounded-left.png" alt="Logout Icon"> Logout
+      </li>
+    </ul>
+  </aside>
+
+  <main class="admin-content">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

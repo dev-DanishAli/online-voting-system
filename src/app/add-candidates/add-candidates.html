@@ -1,0 +1,94 @@
+<div class="add-candidate-card">
+
+  <h2>Add Candidate</h2>
+
+  <form #candidateForm="ngForm"
+        (ngSubmit)="submitCandidate(candidateForm)"
+        class="candidate-form">
+
+    <div class="form-main">
+
+      <div class="form-left">
+
+        <div class="form-group">
+          <label>Candidate ID</label>
+          <input type="text" name="candidate_id"
+                 [(ngModel)]="candidate.candidate_id" required>
+        </div>
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name"
+                 [(ngModel)]="candidate.name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email"
+                 [(ngModel)]="candidate.email">
+        </div>
+
+        <div class="form-group">
+          <label>CNIC</label>
+          <input type="text" name="cnic_number"
+                 [(ngModel)]="candidate.cnic_number">
+        </div>
+
+        <div class="form-group">
+          <label>Department</label>
+          <select name="dept_name"
+                  [(ngModel)]="candidate.dept_name" required>
+            <option value="" disabled>Select Department</option>
+            <option *ngFor="let d of departments" [value]="d.dept_name">
+              {{ d.dept_name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Semester</label>
+          <input type="text" name="semester"
+                 [(ngModel)]="candidate.semester">
+        </div>
+
+        <div class="form-group">
+          <label>Position</label>
+          <select name="position_name"
+                  [(ngModel)]="candidate.position_name" required>
+            <option value="" disabled>Select Position</option>
+            <option *ngFor="let p of positions" [value]="p.position_name">
+              {{ p.position_name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Election</label>
+          <select name="election_id"
+                  [(ngModel)]="candidate.election_id" required>
+            <option value="" disabled>Select Election</option>
+            <option *ngFor="let e of elections" [value]="e.election_id">
+              {{ e.title }}
+            </option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="form-right">
+        <label>Election Sign</label>
+        <input type="file" #fileInput (change)="onFileChange($event)">
+        <img *ngIf="imagePreview" [src]="imagePreview">
+      </div>
+
+    </div>
+
+    <button type="submit" [disabled]="candidateForm.invalid">
+      Add Candidate
+    </button>
+
+    <p class="message" *ngIf="message">{{ message }}</p>
+
+  </form>
+
+</div>

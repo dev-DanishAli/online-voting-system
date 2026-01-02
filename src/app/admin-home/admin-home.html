@@ -1,0 +1,81 @@
+<div class="admin-content">
+  <h2>Dashboard</h2>
+
+  <!-- KPI CARDS ROW -->
+  <div class="kpi-row">
+    <div class="kpi-card red">
+      <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Candidates"></div>
+      <div class="info">
+        <h3>{{ totalCandidates }}</h3>
+        <p>Total Candidates</p>
+      </div>
+    </div>
+
+    <div class="kpi-card blue">
+      <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png" alt="Voters"></div>
+      <div class="info">
+        <h3>{{ totalRegisteredStudents }}</h3>
+        <p>Registered Voters</p>
+      </div>
+    </div>
+
+    <div class="kpi-card yellow">
+      <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/991/991969.png" alt="Votes Cast"></div>
+      <div class="info">
+        <h3>{{ votesCast }}</h3>
+        <p>Votes Cast</p>
+      </div>
+    </div>
+
+    <div class="kpi-card purple">
+      <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Completed Elections"></div>
+      <div class="info">
+        <h3>{{ completedElections }}</h3>
+        <p>Completed Elections</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ongoing Election CARD -->
+  <div class="ongoing-election">
+    <div class="election-info">
+      <i class="fas fa-vote-yea election-icon"></i>
+      <div class="text">
+        <h4>Ongoing Election</h4>
+        <p class="truncate" title="{{ ongoingElection?.name }}">
+          {{ ongoingElection?.name || 'No Active Election' }}
+        </p>
+      </div>
+    </div>
+    <span class="status-badge live">ACTIVE</span>
+  </div>
+
+  <!-- Analytics ROW -->
+  <div class="analytics-row">
+    <div class="analytics-card">
+      <h4>Voting Progress</h4>
+      <div class="circular-progress-wrapper">
+        <div class="circular-progress"
+             [style.background]="'conic-gradient(#4d9fec '+votingProgress+'%, #eee '+votingProgress+'%)'">
+          <div class="progress-text">
+            {{ votesCast }} / {{ totalRegisteredStudents }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="analytics-card">
+      <h4>Active Departments</h4>
+      <ul>
+        <li *ngFor="let dept of activeDepartments">{{ dept }}</li>
+      </ul>
+
+      <h4>Top Candidates</h4>
+      <ul>
+        <li *ngFor="let candidate of topCandidates">
+          {{ candidate.name }} – {{ candidate.votes || 0 }} votes
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
