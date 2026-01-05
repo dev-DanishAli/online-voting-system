@@ -1,44 +1,56 @@
 .cast-vote-container {
   max-width: 1000px;
   margin: 40px auto;
-  padding: 30px;
+  padding: 35px 30px;
   font-family: 'Segoe UI', sans-serif;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-h2 {
+/* Titles */
+.cast-vote-container h2 {
   text-align: center;
   font-size: 28px;
-  margin-bottom: 25px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
 }
 
 .position-title {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #1f6feb;
 }
 
-/* Loading and No Election Messages */
+/* Loading & No Election */
 .loading,
 .no-election-message {
   text-align: center;
-  padding: 40px 0;
+  padding: 50px 0;
   width: 100%;
+  color: #555;
 }
 
+.loading p,
+.no-election-message h3,
+.no-election-message p {
+  margin: 10px 0;
+}
+
+/* Spinner */
 .spinner {
   width: 40px;
   height: 40px;
   border: 4px solid #eee;
-  border-top: 4px solid #f8b500;
+  border-top: 4px solid #1f6feb;
   border-radius: 50%;
-  margin: 0 auto 10px;
+  margin: 0 auto 15px;
   animation: spin 1s linear infinite;
 }
 
@@ -46,54 +58,56 @@ h2 {
   to { transform: rotate(360deg); }
 }
 
-/* Candidate grid */
+/* Candidate Grid */
 .candidates-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 22px;
   width: 100%;
   justify-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
-/* Candidate card */
+/* Candidate Card */
 .candidate-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fff;
+  background: #f9faff;
   padding: 15px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
   width: 100%;
   max-width: 200px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
-.candidate-card.selected,
-.candidate-card:hover {
-  border-color: #f8b500;
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+.candidate-card:hover,
+.candidate-card.selected {
+  border-color: #1f6feb;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
 }
 
-/* Hide radio input */
+/* Hide radio */
 .candidate-card input[type="radio"] {
   display: none;
 }
 
-/* Candidate image */
+/* Candidate Image */
 .candidate-photo {
   width: 100%;
-  height: 150px;
+  height: 160px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 10px;
+  border: 1px solid #ddd;
 }
 
-/* Info */
+/* Candidate Info */
 .candidate-info {
   text-align: center;
 }
@@ -102,6 +116,7 @@ h2 {
   display: block;
   font-weight: 600;
   color: #222;
+  margin-bottom: 4px;
 }
 
 .candidate-meta {
@@ -109,42 +124,61 @@ h2 {
   color: #666;
 }
 
-/* Navigation */
+/* Navigation Buttons */
 .step-navigation {
   display: flex;
   justify-content: center;
   gap: 15px;
   width: 100%;
   max-width: 500px;
+  margin-bottom: 10px;
 }
 
 .step-navigation button {
   flex: 1;
-  padding: 12px;
+  padding: 14px 0;
   font-size: 15px;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.25s ease-in-out;
 }
 
+/* Previous Button */
 .step-navigation button:first-child {
   background: #e5e5e5;
   color: #333;
 }
 
-.step-navigation button:last-child {
-  background: linear-gradient(135deg, #f8b500, #fceabb);
-  color: #333;
+.step-navigation button:first-child:hover:not(:disabled) {
+  background: #d0d0d0;
 }
 
+/* Next / Submit Button */
+.step-navigation button:last-child {
+  background: #1f6feb;
+  color: #fff;
+}
+
+.step-navigation button:last-child:hover:not(:disabled) {
+  background: #155acc;
+}
+
+/* Disabled Buttons */
 .step-navigation button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Responsive adjustments */
+/* No Candidates Message */
+.no-candidates {
+  text-align: center;
+  padding: 20px 0;
+  color: #888;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .candidates-grid {
     grid-template-columns: 1fr;
@@ -152,11 +186,13 @@ h2 {
 
   .step-navigation {
     flex-direction: column;
+    gap: 10px;
   }
 }
+
 @media (max-width: 480px) {
   .cast-vote-container {
-    padding: 20px;
+    padding: 25px;
   }
 
   h2 {
@@ -165,5 +201,9 @@ h2 {
 
   .position-title {
     font-size: 18px;
+  }
+
+  .candidate-photo {
+    height: 140px;
   }
 }

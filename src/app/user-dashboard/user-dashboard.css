@@ -1,67 +1,95 @@
+/* ================================
+   USER DASHBOARD – ENTERPRISE UI
+================================ */
+
 .user-dashboard {
-  text-align: center;
-  padding: 60px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
+  padding: 60px 30px;
+  background-color: #f4f7fb;
   min-height: 100vh;
-  color: #333;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #1f2937;
 }
 
 .user-dashboard h2 {
-  margin-bottom: 40px;
-  font-size: 2rem;
-}
-
-.dashboard-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
-}
-
-.card {
-  width: 180px;
-  height: 180px;
-  background: #ffffff;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  border: 1px solid #eee;
-}
-
-.card img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 15px;
-}
-
-.card p {
-  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 28px;
   font-weight: 600;
+  color: #1e3a8a;
 }
 
+/* Cards container */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Card */
+.card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 30px 25px;
+  text-align: center;
+  cursor: pointer;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+}
+
+/* Icon */
+.card-icon {
+  font-size: 48px;
+  color: #2563eb;
+  margin-bottom: 18px;
+}
+
+/* Title */
+.card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+/* Subtitle */
+.card p {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Hover */
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-  border-color: #f8b500;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  border-color: #2563eb;
 }
 
-.card.cast-vote:hover {
-  background: linear-gradient(135deg, #fceabb, #f8b500);
-  color: #fff;
+/* Disabled */
+.card.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none;
 }
 
-.card.view-candidates:hover {
-  background: linear-gradient(135deg, #fceabb, #f8b500);
-  color: #fff;
+/* Logout subtle distinction */
+.card.logout .card-icon {
+  color: #6b7280;
 }
 
-.card.logout:hover {
-  background: #f06292;
-  color: #fff;
+/* Status messages */
+.status {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: #374151;
+}
+
+.status.warning {
+  color: #b45309;
 }

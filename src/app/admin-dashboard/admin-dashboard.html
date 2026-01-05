@@ -1,31 +1,51 @@
 <div class="admin-dashboard">
+
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <h2>Admin Panel</h2>
-    <ul>
-      <li routerLink="/admin-dashboard/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <img src="https://img.icons8.com/ios-filled/24/000000/combo-chart.png" alt="Dashboard Icon"> Dashboard
+    <div class="sidebar-header">
+      <span class="material-icons logo-icon">how_to_vote</span>
+      <h2>Admin Panel</h2>
+    </div>
+
+    <ul class="menu">
+
+      <li
+        routerLink="/admin-dashboard/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <span class="material-icons">dashboard</span>
+        <span class="menu-text">Dashboard</span>
       </li>
+
       <li routerLink="/admin-dashboard/analytics" routerLinkActive="active">
-        <img src="https://img.icons8.com/ios-filled/24/000000/statistics.png" alt="Analytics Icon"> Analytics
+        <span class="material-icons">analytics</span>
+        <span class="menu-text">Analytics</span>
       </li>
-      <!-- <li routerLink="/admin-dashboard/candidates" routerLinkActive="active">
-        <img src="https://img.icons8.com/ios-filled/24/000000/conference-call.png" alt="Candidates Icon"> Candidates
-      </li> -->
+
       <li routerLink="/admin-dashboard/start-election" routerLinkActive="active">
-        <img src="https://img.icons8.com/ios-filled/24/000000/checklist.png" alt="Start/End Election Icon">Elections
+        <span class="material-icons">how_to_vote</span>
+        <span class="menu-text">Elections</span>
       </li>
+
       <li routerLink="/admin-dashboard/history" routerLinkActive="active">
-        <img src="https://img.icons8.com/ios-filled/24/000000/time-machine.png" alt="History Icon"> History
+        <span class="material-icons">history</span>
+        <span class="menu-text">History</span>
       </li>
-      <li (click)="logout()">
-        <img src="https://img.icons8.com/ios-filled/24/000000/logout-rounded-left.png" alt="Logout Icon"> Logout
+
+      <li class="logout" (click)="logout()">
+        <span class="material-icons">logout</span>
+        <span class="menu-text">Logout</span>
       </li>
+
     </ul>
   </aside>
 
+  <!-- Main Content -->
   <main class="admin-content">
     <div class="content-area">
       <router-outlet></router-outlet>
     </div>
   </main>
+
 </div>

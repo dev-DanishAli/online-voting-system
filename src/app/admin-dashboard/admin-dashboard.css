@@ -1,102 +1,126 @@
+/* Layout */
 .admin-dashboard {
   display: flex;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
+  background: #f4f6f9;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* Sidebar */
 .sidebar {
-  width: 260px;
-  background: linear-gradient(135deg, #fceabb, #f8b500);
-  color: #333;
-  padding: 30px 20px;
+  width: 270px;
+  background: #0f172a; /* Dark enterprise blue */
+  color: #e5e7eb;
+  padding: 25px 20px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  border-radius: 0 5px 5px 0;
-  box-shadow: 5px 0 20px rgba(0,0,0,0.1);
 }
 
-.sidebar h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 30px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  gap: 20px;
-}
-
-.sidebar ul li {
-  padding: 12px 15px;
-  margin: 10px 0;
-  border-radius: 10px;
-  cursor: pointer;
+/* Sidebar Header */
+.sidebar-header {
   display: flex;
   align-items: center;
-  gap: 15px;
-  transition: all 0.3s ease;
-  border: 1px solid #fff3c4;
-  background: #fff8e1;
-  color: #333;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 35px;
 }
 
-.sidebar ul li img {
-  width: 25px;
-  height: 25px;
+.sidebar-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
-.sidebar ul li:hover {
-  background: linear-gradient(135deg, #fceabb, #f8b500);
-  color: #000;
-  transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+.logo-icon {
+  font-size: 28px;
+  color: #38bdf8;
 }
 
-.sidebar ul li.active {
-  background: #f8b500;
-  color: #fff;
-  font-weight: bold;
-  transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+/* Menu */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.25s ease;
+  color: #cbd5f5;
+}
+
+.menu li .material-icons {
+  font-size: 22px;
+}
+
+/* Hover */
+.menu li:hover {
+  background: rgba(59, 130, 246, 0.15);
+  color: #ffffff;
+}
+
+/* Active */
+.menu li.active {
+  background: #1e40af;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Logout */
+.menu li.logout {
+  margin-top: 20px;
+  color: #fca5a5;
+}
+
+.menu li.logout:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fee2e2;
+}
+
+/* Main Content */
 .admin-content {
   flex: 1;
-  padding: 40px 30px;
+  padding: 30px;
 }
 
-.admin-content h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #333;
-}
-
+/* Content Area */
 .content-area {
   background: #ffffff;
-  border-radius: 12px;
-  padding: 25px;
-  min-height: 450px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border-radius: 14px;
+  padding: 30px;
+  min-height: 80vh;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .admin-dashboard {
     flex-direction: column;
   }
+
   .sidebar {
     width: 100%;
     flex-direction: row;
     overflow-x: auto;
   }
-  .sidebar ul {
-    display: flex;
-    gap: 10px;
+
+  .sidebar-header {
+    display: none;
   }
-  .sidebar ul li {
-    flex: 1;
+
+  .menu {
+    display: flex;
+    gap: 8px;
+  }
+
+  .menu li {
+    white-space: nowrap;
     justify-content: center;
   }
 }

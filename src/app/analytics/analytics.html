@@ -1,17 +1,46 @@
-<!-- analytics.html -->
-<div class="container">
-  <h1>Election Analytics</h1>
+<div class="analytics-container">
 
-  <div *ngIf="loading" class="loading">Loading analytics...</div>
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-
-  <div *ngFor="let chart of chartsData" class="chart-card">
-    <h2>{{ chart.positionName }}</h2>
-    <canvas
-      baseChart
-      [data]="chart.chartConfig.data"
-      [type]="chart.chartConfig.type"
-      [options]="chart.chartConfig.options">
-    </canvas>
+  <!-- Header -->
+  <div class="header">
+    <h1>Analytics</h1>
+    <p class="election-title">{{ electionTitle }}</p>
   </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">
+    Loading analytics...
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <!-- Position-wise Analytics -->
+  <div class="cards" *ngIf="!loading && !error">
+
+    <div class="position-card" *ngFor="let key of getPositionKeys()">
+      <h3>{{ analyticsData[key][0]?.position_name }}</h3>
+
+      <div class="candidate" *ngFor="let c of analyticsData[key]">
+        <span class="name">{{ c.candidate_name }}</span>
+        <span class="votes">{{ c.vote_count }} votes</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Winners Section -->
+  <div class="winners-section" *ngIf="winners.length > 0">
+
+    <h2>Top Candidates</h2>
+
+    <div class="winner-card" *ngFor="let w of winners">
+      <span class="position">{{ w.position }}</span>
+      <span class="candidate">{{ w.candidate }}</span>
+      <span class="votes">{{ w.votes }} votes</span>
+    </div>
+
+  </div>
+
 </div>

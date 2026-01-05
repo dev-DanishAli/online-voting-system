@@ -1,29 +1,61 @@
-<main>
+<main class="login-wrapper">
 
-  <div class="login-main-container">
-    
-    <div class="left-panel">
-    <h1>Welcome to Digital Voting</h1>
-    <p>Cast your vote securely and efficiently.</p>
-  </div>
+  <div class="login-card">
 
-  <div class="right-panel">
-    <h2>{{ isAdminRoute ? 'Admin Login' : 'User Login' }}</h2>
-    
-    <div *ngIf="!isAdminRoute">
-      <input type="text" placeholder="Enter Registration Number" [(ngModel)]="regNumber">
+    <!-- Left Section -->
+    <div class="login-info">
+      <h1>Digital Voting System</h1>
+      <p>
+        Secure • Transparent • Reliable  
+        <br />
+        Cast your vote with confidence.
+      </p>
     </div>
 
-    <div *ngIf="isAdminRoute">
-      <input type="text" placeholder="Username" [(ngModel)]="username">
-      <input type="password" placeholder="Password" [(ngModel)]="password">
+    <!-- Right Section -->
+    <div class="login-form">
+      <h2>{{ isAdminRoute ? 'Admin Login' : 'Voter Login' }}</h2>
+
+      <!-- User Login -->
+      <div *ngIf="!isAdminRoute" class="form-group">
+        <label>Registration Number</label>
+        <input
+          type="text"
+          placeholder="Enter your registration number"
+          [(ngModel)]="regNumber"
+        />
+      </div>
+
+      <!-- Admin Login -->
+      <div *ngIf="isAdminRoute">
+        <div class="form-group">
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="Enter username"
+            [(ngModel)]="username"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            [(ngModel)]="password"
+          />
+        </div>
+      </div>
+
+      <button class="login-btn" (click)="login()">
+        {{ isAdminRoute ? 'Login as Admin' : 'Login to Vote' }}
+      </button>
+
+      <div *ngIf="errorMsg" class="error-msg">
+        {{ errorMsg }}
+      </div>
     </div>
 
-    <button (click)="login()">{{ isAdminRoute ? 'Login as Admin' : 'Login' }}</button>
-    
-    <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
   </div>
-  
-</div>
 
 </main>

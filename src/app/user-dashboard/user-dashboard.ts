@@ -14,7 +14,7 @@ export class UserDashboard implements OnInit {
   voterName: string = '';
   electionId: number = 0; // Active election ID
   hasVoted: boolean = false; // Track if voter already voted
-  loadingElection: boolean = true; // Track election loading status
+  loadingElection: boolean = false; // Track election loading status
 
   constructor(
     private router: Router,
@@ -114,10 +114,6 @@ export class UserDashboard implements OnInit {
     }
 
     this.router.navigate(['/cast-vote']);
-  }
-
-  viewCandidates() {
-    this.router.navigate(['/candidates']);
   }
 
   logout() {

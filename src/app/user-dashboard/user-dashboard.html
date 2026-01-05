@@ -2,11 +2,12 @@
   <h2>Welcome, {{ voterName }}</h2>
 
   <div class="dashboard-cards">
-    <!-- Cast Vote Card -->
-    <div 
-      class="card cast-vote" 
-      (click)="castVote()" 
-      [class.disabled]="!electionId || hasVoted || loadingElection"
+
+    <!-- Cast Vote -->
+    <div
+      class="card"
+      (click)="castVote()"
+      [class.disabled]=" hasVoted || loadingElection"
       [title]="
         loadingElection ? 'Loading election...' :
         !electionId ? 'No active election' :
@@ -14,25 +15,22 @@
         'Cast your vote'
       "
     >
-      <img src="https://cdn-icons-png.flaticon.com/512/3129/3129274.png" alt="Cast Vote Icon">
-      <p>Cast Vote</p>
+      <span class="material-icons card-icon">how_to_vote</span>
+      <h3>Cast Vote</h3>
+      <p>Participate in the active election</p>
     </div>
 
-    <!-- View Candidates Card -->
-    <div class="card view-candidates" (click)="viewCandidates()">
-      <img src="https://img.icons8.com/ios-filled/50/000000/conference-call.png" alt="View Candidates Icon">
-      <p>View Candidates</p>
-    </div>
-
-    <!-- Logout Card -->
+    <!-- Logout -->
     <div class="card logout" (click)="logout()">
-      <img src="https://img.icons8.com/ios-filled/50/000000/logout-rounded.png" alt="Logout Icon">
-      <p>Logout</p>
+      <span class="material-icons card-icon">logout</span>
+      <h3>Logout</h3>
+      <p>Sign out from your account</p>
     </div>
+
   </div>
 
   <!-- Status messages -->
-  <p *ngIf="loadingElection">Loading active election...</p>
-  <p *ngIf="!loadingElection && !electionId">No active election at the moment.</p>
-  <p *ngIf="hasVoted">You have already voted in this election.</p>
+  <p class="status" *ngIf="loadingElection">Loading active election...</p>
+  <p class="status" *ngIf="!loadingElection && !electionId">No active election at the moment.</p>
+  <p class="status warning" *ngIf="hasVoted">You have already voted in this election.</p>
 </div>
